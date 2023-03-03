@@ -1,1 +1,35 @@
-<color></color>
+
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-8" >
+
+            <div class="tools">
+                <div class="colors" 
+                    [style.--color-primary]="colorSwaps[0].hex"
+                    [style.--color-secondary]="colorSwaps[1].hex"
+                    (click)="onSwapColors()"
+                    >
+                    <div class="color secondary"></div>
+                    <div class="color primary"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-8" >
+            <div class="canvas-container" [ngStyle]="{'padding-bottom': (matrixSize.height / matrixSize.width * 100) + '%'}">
+                <canvas #canvas (click)="onClick($event)" 
+                    (mousedown)="onMouseDown($event)" 
+                    (mouseup)="onMouseUp($event)" 
+                    (mousemove)="onMouseMove($event)"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-8" >
+            <color [(ngModel)]="activeColor"></color>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,46 @@
-
+$color-size: 2em;
 
 :host {
     display: block;
     height: 100%;
+    position: relative;
 
+    .canvas-container {
+        position: relative;
+        // border: 1px solid var(--background-secondary);
+        background-color: var(--background-secondary);
+        border-radius: 5px;
+        overflow: hidden;
 
+        canvas {
+            position: absolute;
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .tools {
+        .colors {
+            display: inline-block;
+
+            .color {
+                position: relative;
+                height: $color-size;
+                width: $color-size;
+                border-radius: ($color-size * .25);
+                border: ($color-size * .125) solid var(--background-primary);
+
+                &.primary {
+                    background-color: var(--color-primary);
+                    margin-left: $color-size * .5;
+                }
+
+                &.secondary {
+                    background-color: var(--color-secondary);
+                    margin-bottom: $color-size * -.5;
+                }
+            }
+        }
+    }
 }
