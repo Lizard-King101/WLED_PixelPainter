@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg" [ngClass]="navClass">
+    <button class="navbar-toggler" type="button" (click)="menuController.toggleMenu($event)">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav"></ul>
+
+        <ul class="nav navbar-nav navbar-right ml-auto">
+            <ng-container *ngFor="let item of menuController.menuItems">
+                <ng-container *ngIf="item.external">
+                    <li class="nav-item" >
+                        <a class="nav-link mr-3 ml-3" [href]="item.url" target="_blank">{{ item.label }}</a>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="!item.external">
+                    <li class="nav-item" >
+                        <a class="nav-link mr-3 ml-3" [routerLink]="item.url">{{ item.label }}</a>
+                    </li>
+                </ng-container>
+            </ng-container>
+
+        </ul>
+        
+        <!-- <ul class="nav navbar-nav navbar-right">
+            
+        </ul> -->
+    </div>
+
+    <!-- <div class="collapse navbar-collapse">
+        
+    </div> -->
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="btn" (click)="onToggleTheme()">
+                <fa-icon size="2x" [icon]="icon" [classes]="['text-color']"></fa-icon>
+            </a>
+        </li>
+    </ul>
+
+</nav>
+
+<!-- <div class="control-container">
+    <a class="navbar-brand" href="#">
+        <img [src]="logo" width="auto" height="80" class="d-inline-block align-top" alt="">
+        Isodopes
+    </a>
+
+    <div class="btn" (click)="onToggleTheme()">
+        <fa-icon size="2x" [icon]="icon"></fa-icon>
+    </div>
+</div> -->
+

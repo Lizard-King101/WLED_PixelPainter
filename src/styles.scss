@@ -1,0 +1,238 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+@import './font.scss';
+a {
+    font-family: helvetica-neue, sans-serif;
+}
+p,h1,h2,h3,h4,h5,h6,span,li {
+    font-family: helvetica-neue, sans-serif;
+    color: var(--text-color);
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+body {
+    background-color: var(--background-primary);
+    height: 100%;
+}
+
+p {
+    font-size: 1.3em;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+h3 {
+    font-size: 2.125em;
+}
+
+h4 {
+    font-size: 1.95em;
+}
+
+h5 {
+    font-size: 1.75;
+}
+
+:root {
+
+    --background-primary: #fff;
+    --background-secondary: #eeeee6;
+    --background-tertiery: #deded1;
+    --text-color: #000;
+    --text-color-inv: #fff;
+    --text-color-alt: #414141;
+
+    --color-purple: #9d01e1;
+    --color-blue: #016de0;
+    --color-green: #1fe101;
+    --color-orange: #fe9b07;
+    --color-yellow: #fde507;
+    --color-red: #fd0808;
+
+    --background-purple-light: hsl(282, 89%, 84%);
+    --background-blue-light: hsl(211, 89%, 84%);
+    --background-green-light: hsl(112, 89%, 84%);
+    --background-orange-light: hsl(36, 89%, 81%);
+    --background-yellow-light: hsl(54, 88%, 81%);
+    --background-red-light: hsl(0, 88%, 81%);
+
+    body.dark {
+        --background-primary: #0f0f0f;
+        --background-secondary: #20201e;
+        --background-tertiery: #35352f;
+        --text-color: #d8d8d8;
+        --text-color-inv: #000;
+        --text-color-alt: #a7a7a7;
+
+        --background-purple-light: transparent;
+        --background-blue-light: transparent;
+        --background-green-light: transparent;
+        --background-orange-light: transparent;
+        --background-yellow-light: transparent;
+        --background-red-light: transparent;
+    }
+}
+
+.background-secondary {
+    background-color: var(--background-secondary)
+}
+
+body.dark * .background-image .wires img {
+    filter: brightness(.5);
+}
+.background-image {
+    position: relative;
+    overflow: hidden;
+
+    .pipes {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+
+        img {
+            max-width: 80vw;
+        }
+    }
+
+    .wires {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        padding-bottom: 56.25%;
+        transform: rotate(-50deg) translate(-10%, -80%);
+
+        @media screen and (max-width: 576px) {
+            transform: rotate(-45deg) translate(-24%, -50%);
+        }
+
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            
+        }
+    }
+
+    .container, .container-fluid {
+        z-index: 1;
+    }
+}
+
+
+
+$border-width: 90px;
+$border-left: 30px;
+.rainbow-bar {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    font-size: 0px;
+
+    .color {
+        position: relative;
+        width: 16.66%;
+        height: $border-width;
+        font-size: initial;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 30px 5px 0px;
+
+        &:first-child {
+            padding-left: 15px;
+
+            
+        }
+
+        // @media screen and (max-width: 576px) {
+        //     width: 12%;
+
+        //     &:first-child {
+        //         width: 40%;
+        //     }
+        // }
+
+        // @media screen and (min-width: 576px) and (max-width: 992px) {
+        //     width: 14%;
+
+        //     &:first-child {
+        //         width: 30%;
+        //     }
+        // }
+
+        &.purple::before {
+            border-top-color: var(--color-purple);
+        }
+        &.blue::before {
+            border-top-color: var(--color-blue);
+        }
+        &.green::before {
+            border-top-color: var(--color-green);
+        }
+        &.orange::before {
+            border-top-color: var(--color-orange);
+        }
+        &.yellow::before {
+            border-top-color: var(--color-yellow);
+        }
+        &.red::before {
+            border-top-color: var(--color-red);
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: calc(100% + #{$border-left});
+            margin-left: -$border-left;
+            height: 100%;
+            left: 0px;
+            z-index: -1;
+            border-top-width: $border-width;
+            border-top-style: solid;
+            border-left: $border-left solid transparent;
+
+            
+        }
+    }
+}
+
+.rainbow-box {
+    width: 100%;
+    height: 60px;
+    // border-radius: 5px;
+    background: linear-gradient(
+        130deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+    );
+}
+
+.text-color {
+    color: var(--text-color);
+    fill: var(--text-color);
+}
